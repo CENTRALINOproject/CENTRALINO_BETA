@@ -1,0 +1,132 @@
+#include <SoftwareSerial.h>
+#define relay 6
+#define rxPin 9
+#define txPin 8
+#define RECV_PIN = 4;
+/********BLUETOOTH***************/
+SoftwareSerial bluetooth(rxPin, txPin);
+/*******Infra-Red****************/
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+
+String bluetooth_Buffer;
+struct function 
+{
+  short activity;
+  short extra_value;
+} function_temp;
+
+
+void setup ()
+ {
+  Serial.begin(9600); //set baud rate
+  bluetooth.begin(9600);
+  pinMode(relay, OUTPUT);
+  digitalWrite(relay, HIGH);
+  delay(1000);
+  
+ }
+
+void loop ()
+ {
+  event_handler();
+ }
+
+void event_handler()
+{  
+  if(bluetooth.available())
+    bluetooth_handler();  
+   else if (irrecv.decode(&results))
+    ir_handler(&result);
+   else return;
+}
+
+void ir_handler(decode_results *results)
+{
+  
+}
+
+/**********************STRUCTURE BLUETOOTH PACKAGE****************************************
+ * ('figures' in italian : 'cifre')
+ * ([) Message opening                                                    1 position : [0]
+ * (1st number, two figures) Activity                                     2 position : [2]
+ * (,)                                                                    1 position : [3]
+ * (2nd number , four figures) Extra value                                4 position : [7]
+ * (]) message closer                                                     1 position : [8]
+ *****************************************************************************************/
+
+void bluetooth_handler();
+{
+  char check = null;
+  check = bluetooth.read();
+  bluetooth_Buffer += check;
+  if (check==']')
+  bluetooth_Parser();
+  
+}
+
+void bluetooth_Parser()
+{
+  if (int(bluetooth_Buffer.lenght())!=8) //Hard coded dimensions and particularities of the message
+  bluetooth_Buffer = "";
+    else if (bluetooth_Buffer[0]!='[')
+    bluetooth_Buffer = "";
+      else if (blueooth_Buffer[3]!=',')
+      bluetooth_Buffer = "";  
+        else
+        {  String temp_string;
+           long temp=0;
+           //Processing the activity figures 
+            temp_string=bluetooth_Buffer.substring(1,3); // substring (from [index] ,to [index we want in the sub +1]) https://www.arduino.cc/en/Reference/StringSubstring
+            temp=atoi(temp_string);
+            function_temp.activity = int(temp) 
+           //Processing the extra_value figures
+            temp_string=bluetooth_Buffer.substring(4,8); 
+            temp=atoi(temp_string);
+            function_temp.extra_value = int(temp);
+
+            activity manager();
+        }
+  
+}
+
+
+// RUSHED ACTIVITY MANAGER (WILL BE SOSTITUTED WITH A PROPER MANAGER IN FUTURE VERSIONS)
+void activity manager ()
+{
+  if (function_temp.activity == 1) // Turn OFF relay
+      turn_off(function_temp.extra_value);
+  
+  if (function_temp.activity == 2 ) // Turn On relay 
+      turn_on(function_temp.extra_value);
+
+  if (function_temp.activity == 2 ) // Set timer 
+    set_timer(extra_value);
+    
+  if (function_temp.activity == 2 ) // Set daily start
+    set_daily_start(extra_value);
+
+  if (function_temp.activity == 2 ) // Set daily end
+    set_daily_end()
+
+}
+
+void turn_off ( int pin)
+  {
+      digitalWrite(pin , HIGH);
+      Serial.println("OFF");
+      delay (4000);                                     //this is to not overcharge the relay
+  }
+void turn_on ( int pin)
+  {
+      digitalWrite(pin , LOW);
+      Serial.println("ON");
+      delay (4000);                                      //this is to not overcharge the relay
+  }
+
+void bluetooth_Flush(){
+  while(bluetooth.available() > 0) 
+  {
+    char t = bluetooth.read();
+  }
+}   

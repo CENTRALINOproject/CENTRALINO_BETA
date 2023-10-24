@@ -1,0 +1,139 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="-473" y="-192">
+    <mutation component_type="Form" instance_name="Home" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Home</field>
+    <statement name="DO">
+      <block type="controls_if" id="2" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="component_set_get" id="3">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="Enabled" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothClient1</field>
+            <field name="PROP">Enabled</field>
+          </block>
+        </value>
+        <statement name="ELSE">
+          <block type="component_set_get" id="ZTIg`La/P7T=i7ZRJ`|$">
+            <mutation component_type="ActivityStarter" set_or_get="set" property_name="Action" is_generic="false" instance_name="open_settings_activity"></mutation>
+            <field name="COMPONENT_SELECTOR">open_settings_activity</field>
+            <field name="PROP">Action</field>
+            <value name="VALUE">
+              <block type="text" id="0NEu=ox`we`?|^0vi$H$">
+                <field name="TEXT">android.settings.BLUETOOTH_SETTINGS</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="vq$fPO/z~22{@^d]@-j:">
+                <mutation component_type="Notifier" method_name="ShowChooseDialog" is_generic="false" instance_name="Notifier1"></mutation>
+                <field name="COMPONENT_SELECTOR">Notifier1</field>
+                <value name="ARG0">
+                  <block type="text" id="5">
+                    <field name="TEXT">Attiva il bluetooth per utilizzare l'applicazione.</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="text" id="6">
+                    <field name="TEXT">Bluetooth non attivo</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="text" id="7">
+                    <field name="TEXT">Impostazioni</field>
+                  </block>
+                </value>
+                <value name="ARG3">
+                  <block type="text" id="C3h@M;:EP];5b(i!f]5e">
+                    <field name="TEXT">Annulla</field>
+                  </block>
+                </value>
+                <value name="ARG4">
+                  <block type="logic_boolean" id="nw)yTR8eu55E`G!LZYf7">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="InHf4D]{RFhT[2:^]:tT" x="-470" y="145">
+    <mutation component_type="Notifier" instance_name="Notifier1" event_name="AfterChoosing"></mutation>
+    <field name="COMPONENT_SELECTOR">Notifier1</field>
+    <statement name="DO">
+      <block type="controls_if" id="doTJ9UZTui[!I4_BgS;j">
+        <value name="IF0">
+          <block type="logic_compare" id="[7}q6vU|Ub}!zW9a_^#:">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="lexical_variable_get" id="9flpq_pP$/`Ti!L.{+GA">
+                <mutation>
+                  <eventparam name="choice"></eventparam>
+                </mutation>
+                <field name="VAR">choice</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="wSfWGSaGyxD91sw_=}*.">
+                <field name="TEXT">Impostazioni</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" id="LP2nBn9v@,[pHU!_]O__">
+            <mutation component_type="ActivityStarter" method_name="StartActivity" is_generic="false" instance_name="open_settings_activity"></mutation>
+            <field name="COMPONENT_SELECTOR">open_settings_activity</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="pHb0N8Q2};,+e:yWjim$" x="-468" y="364">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="controls_if" id="@(4m05-Xcj{m0QFrKgWE" inline="false">
+        <value name="IF0">
+          <block type="component_set_get" id="m}S]9}!0nVCL4~u3TS)o">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="Enabled" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <field name="COMPONENT_SELECTOR">BluetoothClient1</field>
+            <field name="PROP">Enabled</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" id="wLVO0-tT+O%*X)|@pH(;">
+            <mutation component_type="Button" set_or_get="set" property_name="Visible" is_generic="false" instance_name="Button1"></mutation>
+            <field name="COMPONENT_SELECTOR">Button1</field>
+            <field name="PROP">Visible</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="/(JWcc`+NIeB`W^N!2O{">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="qeD+`9k6K]Tg:/Pp1x8u" x="-465" y="492">
+    <mutation component_type="Button" instance_name="Button1" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">Button1</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreenWithStartValue" id="CS{.)$KZ7RwrLxUCj8dt">
+        <value name="SCREENNAME">
+          <block type="text" id="10">
+            <field name="TEXT">Screen1</field>
+          </block>
+        </value>
+        <value name="STARTVALUE">
+          <block type="math_number" id="4:k;f4p)Y6!wWW1z~G`n">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="159" language-version="20"></yacodeblocks>
+</xml>
