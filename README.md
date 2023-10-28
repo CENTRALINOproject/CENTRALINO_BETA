@@ -151,19 +151,36 @@ The android app presentation is available [here](/Project_Report/Presentazione_a
  -  Fritzing: is a free software for electronic design, focused on the transition from simple prototypes to the printed circuit board to be sent to production. Useful for designing the prototype of the circuit even before it is built.
  - Arduino IDE: is the integrated development environment (Integrated Development Environment) of Arduino, it is a multiplatform application in Java used to compile the code with which the microcontroller that manages the sensors and other components is programmed.
  - Python interpreter: It is a high-level, object-oriented, suitable programming language, among other uses, for developing distributed applications, scripting, numerical computation and system testing. Useful for writing and running programs for Windows, Android and a selected distribution of Linux.
- - Android AppInventor: It is a web application that allows you to create applications for Android operating systems using a graphical interface. Useful for creating the application that will be used to control the device. 
+ - MIT App Inventor (Framework): is a web application created by Google but now owned by the Massachusetts Institute of Technology. A development environment useful for creating applications for personal use.
+ - BlueStacks: is an application created by the American company BlueStacks Systems Inc. in 2011. BlueStacks App Player is an android app emulator for MacOS and Windows operating systems. The main features are the fully customizable environment, support for multiple operating system configurations and integration with Google Play.
+
+ ## System architecture
+
+  - A user can connect to CENTRALINO with the appropriate software application simply via the Bluetooth. 
+  
+### The final system will be based on the presence of three characters:
+
+<p align = "center">
+<img src = "Project_Report/media/diagram.svg" width = "60%" title = "diagram">
+
+  - **USER**: (uses the application) connects via bluetooth to the devices.
+  - **CENTRALINO**: (described in this readme) controls the power outlet.
+  - **CENTRALINO-SERVER**: (creation is planned) that gives the user the possibility to control all the associated CENTRALINO without ever having to disconnect from CENTRALINO SERVER that will take care of managing the communications with the others.
+
+ In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
 
 ## Tools used (Hardware):
 
  - Welder.
- - PonD.
  - Cellulose adhesive tape.
+ - Screwdrivers.
+ - Solder wire.
+ - Liquid silicone.
 
 ## Components used (Hardware):
 
      • Jumpers for solderless male-male connections.
      • Bread Board for experimental prototypes of solderless circuits.
-     • Infrared emitting LEDs.
      • Infrared receiver.
      • Buttons/Buttons.
      • Bluetooth transceiver module – module for Bluetooth transmission and reception.
@@ -183,89 +200,51 @@ Prices are taken from the following sites:
      • IR receiver = 10 pieces for €0.73.
      • Buttons/Buttons = 100 pieces for €1.44.
      • RTC (Real Time Clock) = 1 piece for €1.20.
-     • Assortment of resistors = 300 pieces for €1.62.
-     • Bluetooth = 2 pieces for €2.73 each.
-     • Micro SD Mini slot = 2 pieces for €0.47 each.
      • Micro ATmegax32u4 = 3 pieces for €4.59 each.
+     • Micro SD Mini slot = 2 pieces for €0.47 each.
+     • Assortment of resistors = 300 pieces for €1.62.
+     • Bluetooth HC-06 module = 2 pieces for €2.73 each.
+     • 2-channel relay module (Sain Smart) = 1 piece for €9.00.
 
 TOTAL = 
 
-    2.39 * 1 + 0.74 * 2 + 1.25 * 1 + 0.73 * 1 + 1.44 * 1 + 1.20 * 1 + 1.62 * 1 + 2.73 * 2 + 0.47 * 2 + 4.59 * 3 
-= €30.92
+    2.39 * 1 + 0.74 * 2 + 1.25 * 1 + 0.73 * 1 + 1.44 * 1 + 1.20 * 1 + 4.59 * 3 + 0.47 * 2 + 1.62 * 1 + 2.73 * 2 + 9.00 * 1
+= €40.88
+
+> Actually not all the components are strictly necessary, but they were bought in order to have some spare parts in case of damage or malfunction.
+
+#### Enclosure
+
+    • Box = 1 piece for €7.00.
+
+Produced by a local company: Tomea Plastiche.
+
+The enclosure is a box made of plexiglass, a material that is aesthetically pleasing, partially fireproof and relatively easy to work with. Wood and metal were excluded, the first for its predisposition to fire and the second for its well-known electrical conductivity.
+
+### Implementation specifications
+
+In order to be able to implement the device in a larger system, the device only needs a connection to the mains powered at 220 V (Volts) (such as the domestic power grid) and a current voltage not exceeding 15 A (Ampere) to avoid damaging the circuit or incurring a malfunction of the device. 
 
 ------------------------------------------------------
+
+### Further development
+
+Possibly in the future the CENTRALINO server may be provided with a wirless antenna in order to communicate with a router, which in turn communicates with the user, possibly via the internet. However, this poses a problem of security and privacy. 
+
+<p align = "center">
+<img src = "Project_Report/media/diagram_future_expansion.svg" width = "60%" title = "diagram">
+</p>
+
 
 ### Known issues:
 
-Concerning the Instant On/Off function:
+ #### Concerning the Instant On/Off function:
 For greater safety, future security measures should be implemented to prevent continuous switching on and off of the same outlet to avoid damaging the connected devices and the microcontroller itself.
 
-Concerning voice commands:
+ #### Concerning voice commands:
 The voice commands syntax is very simple, but it is also very limited. It is not possible to deviate even just a little without incurring in unrecognized commands. This is due to the total absence of natural language processing, which in 2017 I dint know how to implement.
 
-Concerning InfraRed communication:
+ #### Concerning InfraRed communication:
 The code structure of the device is able to eventually support infrared communication, but it is not implemented yet. However the physical circuitry is designed to support it.
 
 ------------------------------------------------------
-
-
-TO ADD AOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-CONTROLLA ANCHE SUL REPORT DI AVER MESSO TUTTO QUANTO
-    5. Interfaccia utente
-        5.1. L'interfaccia utente del dispositivo è prettamente manuale, è possibile solo la disattivazione completa di esso tramite il pulsante blu all'interno della scatola contenitrice. Il dispositivo è programmabile ed è possibile interagire con esso solo con l'applicazione software apposita a meno che non lo si voglia spegnere tramite il suddetto pulsante interno.
-    6. Elenco componenti
-Nome
-Venditore
-Prezzo (€)
-Breve descrizione
-Modulo relay da 2 canali
-Sain Smart
-9.00
-Modulo per il controllo del flusso di corrente.
-Arduino Micro
-Ali-express
-4.50
-Microcontrollore
-Modulo Bluetooth HC-06
-Ali-express
-5.20
-Modulo per la trasmissione senza fili Bluetooth
-Modulo RTC (Real Time Clock)
-Ali-express
-3.50
-Modulo orologio indipendente e autonomo (alimentato a batteria)
-Scatola 
-Tomea plastiche
-7.00
-Scatola contenitrice.
-Tabella 1
-    7. Scelta dei componenti e preventivo
-        7.1. I componenti hanno uno scopo prototipale, non si esclude affatto la futura rielaborazione e nuova creazione di una lista di componenti più specifici.
-        7.2. La scatola contenitrice è appositamente stata realizzata in plexiglass perché è il materiale che più si avvicina alla necessità di un materiale esteticamente accattivante, parzialmente ignifugo e relativamente facilmente realizzabile. Sono stati esclusi legno e metallo, il primo per la sua predisposizione al fuoco e il secondo per la sua nota conduttività elettrica.
-        7.3. Il preventivo per la realizzazione dello stesso progetto è di 29.2 € per quanto riguarda la componentistica che è stata utilizzata. Supponendo una produzione in serie il prezzo calerebbe drasticamente. Una delle forze infatti del progetto stesso è anche il basso costo di costruzione che esso richiede.
-    8. Simulazioni
-        8.1. Sono state effettuate delle simulazioni in ambienti controllati e sicuri con esiti positivi, testando tutte le funzionalità di CENTRALINO.
-
-
-    3. Architettura di sistema
-        3.1. Un utente può collegarsi a CENTRALINO con l'apposita applicazione software semplicemente tramite le impostazioni Bluetooth offerte dall'applicazione stessa. Una volta che l'utente si connette ad esso, per controllarne un altro dovrà prima disconnettersi da quello a cui è già collegato. Il sistema finale si baserà sulla presenza di tre personaggi :
-            ▪ Utente controllore (utilizza applicazione software descritta nella sezione successiva della relazione) che impartisce i comandi ai dispositivi.
-            ▪ CENTRALINO (descritta in questa parte della relazione) che controlla la presa di corrente.
-            ▪ CENTRALINO-SERVER (non descritta in questa relazione ma di cui è prevista la futura creazione) che da la possibilità all'utente di controllare tutti i CENTRALINO associati senza mai doversi disconnettere da CENTRALINO SERVER che provvederà lui stesso a gestire le comunicazioni con gli altri. 
-    4. Specifiche implementative
-        4.1. Per funzionare ed essere implementato in un sistema più grande il dispositivo necessità solamente di una connessione alla rete elettrica alimentata a 220 V (Volt) (come ad esempio la rete elettrica domestica) ed una tensione di corrente non superiore a 15 A (Ampere) per non rischiare di danneggiare il circuito o incorrere in un malfunzionamento del dispositivo. 
-
-
-AI SOFTWARE 
-
-                ◦ MIT App Inventor (Framework): è una applicazione web creata da Google ma ora posseduto dal Massachusetts Institute of Technology. Un ambiente di sviluppo utile a creare applicazioni per android di uso personale.
-        ◦ BlueStacks : è un'applicazione creata dall'azienda americana BlueStacks Systems Inc. nel 2011. BlueStacks App Player è un emulatore di app android per i sistemi operativi MacOS e Windows. Le caratteristiche principali sono l'ambiente completamente personalizzabile, il supporto per molteplici configurazioni di sistema operativo e l'integrazione con Google Play.
-
-
-STA ROBBA
-    3. Strumenti utilizzati (Hardware):
-        ◦ Saldatore.
-        ◦ Cacciaviti vari.
-        ◦ Stagno.
-        ◦ Silicone liquido.
-        ◦ Strumenti di misura di precisione.
