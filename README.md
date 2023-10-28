@@ -29,12 +29,11 @@ Something that will always suggest how ...
 </p>
 
 <p align = "center">
-<img src = "Project_Report/media/vista_fondo_min.jpg" width = "20%" title = "sketch">
-<img src = "Project_Report/media/vista_laterale_mina.jpg" width = "40%" title = "lateral sketch">
-<img src = "Information_Gathering/Multimedia/Pin_out/ArduinoMicro_Pinout3.png" width = "20%" title = "Logo">
-<br>
-<img src = "Design/Android_Centralino/Screenshots/screenshot1.png" width = "20%" title = "screenshot1">
-<img src = "Design/Android_Centralino/Screenshots/screenshot2.png" width = "21%" title = "screenshot2">
+<img src = "Project_Report/media/vista_fondo_min.jpg" width = "12%" title = "sketch">
+<img src = "Project_Report/media/vista_laterale_mina.jpg" width = "22%" title = "lateral sketch">
+<img src = "Information_Gathering/Multimedia/Pin_out/ArduinoMicro_Pinout3.png" width = "12%" title = "Logo">
+<img src = "Design/Android_Centralino/Screenshots/screenshot1.png" width = "11%" title = "screenshot1">
+<img src = "Design/Android_Centralino/Screenshots/screenshot2.png" width = "11%" title = "screenshot2">
 </p>
 
 
@@ -44,17 +43,20 @@ The project was born in Italian, so unfortunately many of the comments in the co
 I apologize for this, but I hope that the code is still understandable and that the documentation is still useful (maybe with the help of a translator).
 However, I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone.
 
-### Project reference sector.
+## Project reference sector.
 Novel Technologies, Internet of Things (IoT), Home Automation.
 
-### Idea and objective:
+## Idea and objective:
 
 The project was born with the purpose of making residential and working complex more connected to the people who inhabit it. The project aims to enhance humans environmental control. 
 CENTRALINO is designed to control electrical devices such as household appliances, electric, air conditioners, heating systems, and similar.
-This centralization of control can, in some cases, change a person's experience with the surrounding world. The CENTRALIzation of automation is sometimes not just a convenience but a necessity, i.e. in case of subjects with disabilities. In such cases, "smart homes" are a topic that companies are vigorously addressing to offer increasing automation and integration between systems and services. 
+
+An increased control can change a person's experience with the surrounding world. The CENTRALIzation of automation is sometimes not just a convenience but a necessity, e.g. in case of subjects with disabilities. 
+
+"Smart homes" are a topic that companies are vigorously addressing to offer increasing automation and integration between systems and services. 
 Home automation involves a complex mix of various technologies and requires strong interdisciplinary collaboration.
 
-Therefore, the project aims to:
+### The project aims to:
 
  - Enhance security of electrical devices populated environments.
  - Reduce operating costs.
@@ -62,12 +64,12 @@ Therefore, the project aims to:
  - Simplify the design, installation, maintenance, and use of technology.
  - As a whole: improve the quality of life.
 
-### Description of the project:
+## Description of the project:
 
 The project is named "CENTRALINO" (Italian for "switchboard"), the name reflects its function of both **centralizing** and **managing** control, much like in telecommunications. 
 It is a device that allows remote control of multiple power outlets with the ability to be programmed and scheduled at specific intervals using an internal clock. The device is easily configured with mobile devices such as phones, tablets, or computers. The latter only needs to support applications designed for Android operating systems and have a Bluetooth transmitter.
 
-### Functions of the device:
+## Functions of the device:
 
 Currently, there are three main functions, but the most important aspect is that there is a foundation that anyone can use to develop their own custom functions. 
 
@@ -88,27 +90,34 @@ Currently, there are three main functions, but the most important aspect is that
 # Repository structure
 
     .
-    ├── Design                        # Design files
-    │   ├── 
-    │   ├── 
-    │   └── 
     |
-    ├── Information_Gathering 
-    │   ├── Documents                 # Documents concerning components working principles
-    │   │    ├── Bluetooth            # Code snippets and protocol description of bluetooth communication
-    │   │    ├── Infra_Red            # Semiconductor and diodes working principles
-    │   │    ├── Transfer_Protocols   # I2C and SPI protocols description
-    │   │    └── Flex_sensor          # Flex sensor working principles
+    ├── Information_Gathering
+    │   ├── Documents                           # Documents concerning components working principles
+    │   │    ├── Bluetooth                      # Code snippets and protocol description of bluetooth communication
+    │   │    ├── Infra_Red                      # Semiconductor and diodes working principles
+    │   │    ├── Transfer_Protocols             # I2C and SPI protocols description
+    │   │    └── Flex_sensor                    # Flex sensor working principles
     │   │
-    │   └── Multimedia                # Pin configuration for different components
+    │   └── Multimedia                          # Pin configuration for different hardware components
     │        ├── ...
     │        └── ...
+    │
+    ├── Design                                  # Design files
+    │   ├── Android_Centralino                  # Android app files and latest version apk 
+    │   ├── Logo                                # Logo images
+    │   └── Software                            # Arduino code files
+    |       ├── CLIENTino_versions              # CENTRALINO code versions
+    |       ├── Librerie                        # Arduino libraries
+    |       └── ...
     │      
-    ├── Project_Report                # 
+    └── Project_Report                          # Final report of the project
+        ├── Presentazione_applicazione.pdf      # Android app presentation
+        ├── Relazione progetto CENTRALINO.pdf   # Project report
+        └── ...
 
 
 
-### Information gathering on components: 🔧🔩
+## Information gathering on components: 🔧🔩
 
 I used to create small documentation files for each component and some of them are here listed:
 
@@ -119,24 +128,38 @@ I used to create small documentation files for each component and some of them a
 - [Flex Sensor](/Information_Gathering/Documents/Flex_sensor/Flex_sensor.md)
 
 
+## Design: 📐
+
+Here is possible to find the latest version of the Android app and the Arduino code.
+
+- [Android app](/Design/Android_Centralino/App_builds/STABLE_CENTRALINO1_3.apk) 📱
+
+- [Arduino code](/Design/Software/CLIENTino_versions/CLIENTinoPRESENTATION1_1/CLIENTinoPRESENTATION1_1.ino) ⚙
+
+## Project report: 📝
+
+The project report is available [here](/Project_Report/Relazione%20progetto%20CENTRALINO.pdf) (in Italian).
+
+The android app presentation is available [here](/Project_Report/Presentazione_applicazione.pdf) (in Italian).
+
 ------------------------------------------------------
 
 # Implementation
 
-### Tools used (Software).
+## Tools used (Software).
 
  -  Fritzing: is a free software for electronic design, focused on the transition from simple prototypes to the printed circuit board to be sent to production. Useful for designing the prototype of the circuit even before it is built.
  - Arduino IDE: is the integrated development environment (Integrated Development Environment) of Arduino, it is a multiplatform application in Java used to compile the code with which the microcontroller that manages the sensors and other components is programmed.
  - Python interpreter: It is a high-level, object-oriented, suitable programming language, among other uses, for developing distributed applications, scripting, numerical computation and system testing. Useful for writing and running programs for Windows, Android and a selected distribution of Linux.
  - Android AppInventor: It is a web application that allows you to create applications for Android operating systems using a graphical interface. Useful for creating the application that will be used to control the device. 
 
-### Tools used (Hardware):
+## Tools used (Hardware):
 
  - Welder.
  - PonD.
  - Cellulose adhesive tape.
 
-### Components used (Hardware):
+## Components used (Hardware):
 
      • Jumpers for solderless male-male connections.
      • Bread Board for experimental prototypes of solderless circuits.
@@ -149,7 +172,7 @@ I used to create small documentation files for each component and some of them a
      • RTC (Real Time Clock) Real Time Clock – module with battery.
      • Micro ATmegax32u4 powered by 5V (microcontroller).
 
-### Cost of components:
+## Cost of components:
 
 Prices are taken from the following sites:
      - AliExpress: is a branch of the "Alibaba Group" company that unites Chinese companies and offers a retail service to an international market, mainly targeting European buyers. It is the supplier of our components.
@@ -184,10 +207,6 @@ Concerning InfraRed communication:
 The code structure of the device is able to eventually support infrared communication, but it is not implemented yet. However the physical circuitry is designed to support it.
 
 ------------------------------------------------------
-
-### Project report
-
-It is possible to find the project report [here](/Project_Report/Relazione%20progetto%20CENTRALINO1862017.pdf)
 
 
 TO ADD AOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
