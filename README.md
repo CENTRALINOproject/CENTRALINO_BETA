@@ -28,6 +28,14 @@ Something that will always suggest how ...
 <b>...every long journey begins with a first step.</b>
 </p>
 
+<p align = "center">
+<img src = "Design/Logo/Logo_app.png" width = "20%" title = "Logo">
+<img src = "Project_Report/media/vista_fondo_min.jpg" width = "15%" title = "sketch">
+<img src = "Project_Report/media/vista_laterale_mina.jpg" width = "25%" title = "lateral sketch">
+
+</p>
+
+
 ------------------------------------------------------
 ##### Small note on language 🇮🇹 🇬🇧:
 The project was born in Italian, so unfortunately many of the comments in the code as well as documentation and the report are in Italian.
@@ -95,9 +103,10 @@ Currently, there are three main functions, but the most important aspect is that
 
 
 
+### Information gathering on components: 🔧🔩
+
 I used to create small documentation files for each component and some of them are here listed:
 
-### Information gathering on components: 🔧🔩
 - [Bluetooth Coding](/Information_Gathering/Documents/Bluetooth/Bluetooth_coding.md)
 - [Bluetooth](/Information_Gathering/Documents/Bluetooth/Bluetooth_study.md)
 - [InfraRed and semiconductors](/Information_Gathering/Documents/Infra_Red/Semiconduttori.md)
@@ -107,7 +116,7 @@ I used to create small documentation files for each component and some of them a
 
 ------------------------------------------------------
 
-# Technical details
+# Implementation
 
 ### Tools used (Software).
 
