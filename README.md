@@ -156,18 +156,19 @@ The android app presentation is available [here](/Project_Report/Presentazione_a
 
  ## System architecture
 
-  - A user can connect to CENTRALINO with the appropriate software application simply via the Bluetooth. 
+A user can connect to CENTRALINO with the appropriate software application simply via Bluetooth. 
   
 ### The final system will be based on the presence of three characters:
 
 <p align = "center">
 <img src = "Project_Report/media/diagram.svg" width = "40%" title = "diagram">
+</p>
 
-  - **USER**: (uses the application) connects via bluetooth to the devices.
-  - **CENTRALINO**: (described in this readme) controls the power outlet.
+  - **USER**: connects via bluetooth to the devices.
+  - **CENTRALINO**: controls the power outlet.
   - **CENTRALINO-SERVER**: (creation is planned) that gives the user the possibility to control all the associated CENTRALINO without ever having to disconnect from CENTRALINO SERVER that will take care of managing the communications with the others.
 
- In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
+In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
 
 ## Tools used (Hardware):
 
