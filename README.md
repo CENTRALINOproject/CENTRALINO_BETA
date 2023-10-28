@@ -31,7 +31,7 @@ Something that will always suggest how ...
 <p align = "center">
 <img src = "Project_Report/media/vista_fondo_min.jpg" width = "12%" title = "sketch">
 <img src = "Project_Report/media/vista_laterale_mina.jpg" width = "22%" title = "lateral sketch">
-<img src = "Information_Gathering/Multimedia/Pin_out/ArduinoMicro_Pinout3.png" width = "12%" title = "Logo">
+<img src = "Information_Gathering/Multimedia/Pin_out/ArduinoMicro_Pinout3.png" width = "12%" title = "pinout arduino micro">
 <img src = "Design/Android_Centralino/Screenshots/screenshot1.png" width = "11%" title = "screenshot1">
 <img src = "Design/Android_Centralino/Screenshots/screenshot2.png" width = "11%" title = "screenshot2">
 </p>
@@ -145,15 +145,14 @@ The android app presentation is available [here](/Project_Report/Presentazione_a
 
 ------------------------------------------------------
 
-# Implementation
+# Implementation 
 
 ## Tools used (Software).
 
- -  Fritzing: is a free software for electronic design, focused on the transition from simple prototypes to the printed circuit board to be sent to production. Useful for designing the prototype of the circuit even before it is built.
- - Arduino IDE: is the integrated development environment (Integrated Development Environment) of Arduino, it is a multiplatform application in Java used to compile the code with which the microcontroller that manages the sensors and other components is programmed.
- - Python interpreter: It is a high-level, object-oriented, suitable programming language, among other uses, for developing distributed applications, scripting, numerical computation and system testing. Useful for writing and running programs for Windows, Android and a selected distribution of Linux.
- - MIT App Inventor (Framework): is a web application created by Google but now owned by the Massachusetts Institute of Technology. A development environment useful for creating applications for personal use.
- - BlueStacks: is an application created by the American company BlueStacks Systems Inc. in 2011. BlueStacks App Player is an android app emulator for MacOS and Windows operating systems. The main features are the fully customizable environment, support for multiple operating system configurations and integration with Google Play.
+ - **Fritzing**: is a free software for electronic design, focused on the transition from simple prototypes to the printed circuit board to be sent to production. Useful for designing the prototype of the circuit even before it is built.
+ - **Arduino IDE**: is the integrated development environment (Integrated Development Environment) of Arduino, it is a multiplatform application in Java used to compile the code with which the microcontroller that manages the sensors and other components is programmed.
+ - **MIT App Inventor (Framework)**: is a web application created by Google but now owned by the Massachusetts Institute of Technology. A development environment useful for creating applications for personal use.
+ - **BlueStacks**: is an application created by the American company BlueStacks Systems Inc. in 2011. BlueStacks App Player is an android app emulator for MacOS and Windows operating systems. The main features are the fully customizable environment, support for multiple operating system configurations and integration with Google Play.
 
  ## System architecture
 
@@ -170,6 +169,69 @@ A user can connect to CENTRALINO with the appropriate software application simpl
   - **CENTRALINO-SERVER**: (creation is planned) that gives the user the possibility to control all the associated CENTRALINO without ever having to disconnect from CENTRALINO SERVER that will take care of managing the communications with the others.
 
 In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
+
+## Rationale behind the code structure
+
+Referring to the latest version of the code, available [here](/Design/Software/CLIENTino_versions/CLIENTinoPRESENTATION1_1/CLIENTinoPRESENTATION1_1.ino).
+
+### Brief overview of the code structure:
+The code utilizes two data structures named `function` and `relay`. 
+
+The `function` structure is responsible for containing the information received through Bluetooth packets, while the `relay` structure is responsible for storing information related to the physical device's outlets. 
+
+Each `relay` structure will have its own:
+ - activation and deactivation times, 
+ - a timer,
+ - a numerical description to indicate on which physical relay to issue a command, especially the pin address so that the microcontroller knows where to send the activation/deactivation signal. 
+
+#### How is the information received from the Bluetooth packets stored?
+
+An additional layer on top of the Bluetooth communication system was created to make the system more flexible. Bluetooth covers all seven levels of the ISO/OSI, but with an additional layer, it is possible to managae different power outlets an the same CENTRALINO (making this comunication mean flexible to our purspose).
+
+#### Bluetooth Packet Structure:
+
+##### Initiator and terminator:
+Each Bluetooth packet consists of 16 bytes and has a packet initiator "[" (ASCII: 91) and a terminator "]" (ASCII: 93). 
+Without these, it would be impossible to determine when a packet begins or ends, making byte stream handling much more manageable. 
+
+##### Content and divisions:
+Inside the packet, there are additional divisions indicated by the symbol "," (ASCII: 44). It helps determine the beginning and end of each packet sector, providing greater packet integrity (in the case of erroneous transmissions, if there are no ",", the packet will not be considered valid. For a better understanding, refer to the "void bluetooth_Parser()" function). 
+
+**The final structure of the packet is as follows**
+
+[ Activity (2 digits) , Extra_value (4 digits) , Extra_value2 (6 digits) ]
+
+ - `Activity` varies based on Wake-up/Timer and On/Off. 
+ - `Extra_value` contains the pin number to which the command should be directed. 
+ - `Extra_value2` contains, in the case of "Wake-up," the time in the hh:mm:ss format, and in the case of "Timer," the time in milliseconds.
+
+##### Activity handling:
+The system also has an "activity handler"; it serves to manage packets once they have been "routed" and understand the actions required. 
+
+The variable `activity` mentioned in the previous point stores the code corresponding to the action the microcontroller must perform (e.g., 01 and 02 are the `activity` corresponding to instantaneous power On and Off). 
+
+In `Extra_value`, is stored the device number, the packet refers to, so the value found in `rel[x].socket` is, in fact, the pin to which the relay is connected and to which `Extra_value` refers (this mechanism makes it possible to address packets to individual devices, similarly to a "MAC address"). 
+
+In `Extra_value2`, you can find the supplementary value that supports the "activity." For example, the times for "alarms" expressed as "001650" (for integrity reasons, they are always six digits). The one just mentioned is an alarm for 16:50.
+> Example packet: "[03,0006,001650]". It sets a power-on alarm for 16:50 on pin 6.
+
+### Main Challenges
+
+#### Limitations of the microcontroller:
+The microcontroller lacks an internal clock, making it impossible for it to determine the time during activities. This required the use of an external component, a Real-Time Clock module, to manage the time. 
+
+However, this component does not have alarm or timer functions, so the microcontroller had to handle time and activity deadlines on its own. 
+
+Additionally, there was the issue that if two `relay` structures had the same deactivation time and the time for acquiring the time was too slow, the system might be too slow to manage the alarms. This was resolved with the "void turn_by_match()" function, which checks each individual `relay` structure in times well below a second and ensures that multiple `relays` can be turned on/off simultaneously, even when the times coincide down to the second.
+
+#### Automatic retrieval of the number of devices connected to CENTRALINO by the app:
+To inform the application about the devices connected to the device, and for this purpose, a superficial description of the power outlets was required. Thus, the `description` variable with a legend (referred to in the code as MEANINGS OF DESCRIPTION) was introduced. The mechanism through which the application learns about the various `descriptions` of the `relay` structures is as follows:
+
+> - The software application sends a packet with activity = 50, i.e., a Discovery (requesting information to be sent).
+> - The device sends as many packets as there are "relay" structures with activity = 51 and the respective rel[].description (the description of each structure)
+> - Finally sends a packet with activity = 99, which means that the relays have been completed, and the application can stop waiting for more information.
+
+------------------------------------------------------
 
 ## Tools used (Hardware):
 
@@ -248,5 +310,3 @@ The voice commands syntax is very simple, but it is also very limited. It is not
 
  #### Concerning InfraRed communication:
 The code structure of the device is able to eventually support infrared communication, but it is not implemented yet. However the physical circuitry is designed to support it.
-
-------------------------------------------------------
