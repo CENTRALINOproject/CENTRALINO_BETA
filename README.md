@@ -185,3 +185,65 @@ The code structure of the device is able to eventually support infrared communic
 ### Project report
 
 It is possible to find the project report [here](/Project_Report/Relazione%20progetto%20CENTRALINO1862017.pdf)
+
+
+TO ADD AOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+CONTROLLA ANCHE SUL REPORT DI AVER MESSO TUTTO QUANTO
+    5. Interfaccia utente
+        5.1. L'interfaccia utente del dispositivo è prettamente manuale, è possibile solo la disattivazione completa di esso tramite il pulsante blu all'interno della scatola contenitrice. Il dispositivo è programmabile ed è possibile interagire con esso solo con l'applicazione software apposita a meno che non lo si voglia spegnere tramite il suddetto pulsante interno.
+    6. Elenco componenti
+Nome
+Venditore
+Prezzo (€)
+Breve descrizione
+Modulo relay da 2 canali
+Sain Smart
+9.00
+Modulo per il controllo del flusso di corrente.
+Arduino Micro
+Ali-express
+4.50
+Microcontrollore
+Modulo Bluetooth HC-06
+Ali-express
+5.20
+Modulo per la trasmissione senza fili Bluetooth
+Modulo RTC (Real Time Clock)
+Ali-express
+3.50
+Modulo orologio indipendente e autonomo (alimentato a batteria)
+Scatola 
+Tomea plastiche
+7.00
+Scatola contenitrice.
+Tabella 1
+    7. Scelta dei componenti e preventivo
+        7.1. I componenti hanno uno scopo prototipale, non si esclude affatto la futura rielaborazione e nuova creazione di una lista di componenti più specifici.
+        7.2. La scatola contenitrice è appositamente stata realizzata in plexiglass perché è il materiale che più si avvicina alla necessità di un materiale esteticamente accattivante, parzialmente ignifugo e relativamente facilmente realizzabile. Sono stati esclusi legno e metallo, il primo per la sua predisposizione al fuoco e il secondo per la sua nota conduttività elettrica.
+        7.3. Il preventivo per la realizzazione dello stesso progetto è di 29.2 € per quanto riguarda la componentistica che è stata utilizzata. Supponendo una produzione in serie il prezzo calerebbe drasticamente. Una delle forze infatti del progetto stesso è anche il basso costo di costruzione che esso richiede.
+    8. Simulazioni
+        8.1. Sono state effettuate delle simulazioni in ambienti controllati e sicuri con esiti positivi, testando tutte le funzionalità di CENTRALINO.
+
+
+    3. Architettura di sistema
+        3.1. Un utente può collegarsi a CENTRALINO con l'apposita applicazione software semplicemente tramite le impostazioni Bluetooth offerte dall'applicazione stessa. Una volta che l'utente si connette ad esso, per controllarne un altro dovrà prima disconnettersi da quello a cui è già collegato. Il sistema finale si baserà sulla presenza di tre personaggi :
+            ▪ Utente controllore (utilizza applicazione software descritta nella sezione successiva della relazione) che impartisce i comandi ai dispositivi.
+            ▪ CENTRALINO (descritta in questa parte della relazione) che controlla la presa di corrente.
+            ▪ CENTRALINO-SERVER (non descritta in questa relazione ma di cui è prevista la futura creazione) che da la possibilità all'utente di controllare tutti i CENTRALINO associati senza mai doversi disconnettere da CENTRALINO SERVER che provvederà lui stesso a gestire le comunicazioni con gli altri. 
+    4. Specifiche implementative
+        4.1. Per funzionare ed essere implementato in un sistema più grande il dispositivo necessità solamente di una connessione alla rete elettrica alimentata a 220 V (Volt) (come ad esempio la rete elettrica domestica) ed una tensione di corrente non superiore a 15 A (Ampere) per non rischiare di danneggiare il circuito o incorrere in un malfunzionamento del dispositivo. 
+
+
+AI SOFTWARE 
+
+                ◦ MIT App Inventor (Framework): è una applicazione web creata da Google ma ora posseduto dal Massachusetts Institute of Technology. Un ambiente di sviluppo utile a creare applicazioni per android di uso personale.
+        ◦ BlueStacks : è un'applicazione creata dall'azienda americana BlueStacks Systems Inc. nel 2011. BlueStacks App Player è un emulatore di app android per i sistemi operativi MacOS e Windows. Le caratteristiche principali sono l'ambiente completamente personalizzabile, il supporto per molteplici configurazioni di sistema operativo e l'integrazione con Google Play.
+
+
+STA ROBBA
+    3. Strumenti utilizzati (Hardware):
+        ◦ Saldatore.
+        ◦ Cacciaviti vari.
+        ◦ Stagno.
+        ◦ Silicone liquido.
+        ◦ Strumenti di misura di precisione.
