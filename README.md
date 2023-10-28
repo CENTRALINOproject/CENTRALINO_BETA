@@ -43,8 +43,9 @@ The project was born in Italian, so unfortunately many of the comments in the co
 I apologize for this, but I hope that the code is still understandable and that the documentation is still useful (maybe with the help of a translator).
 However, I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone.
 
-## Project reference sector.
-Novel Technologies, Internet of Things (IoT), Home Automation.
+**Project reference sector:**
+
+`Novel Technologies`, `Internet of Things (IoT)`, `Home Automation`.
 
 ## Idea and objective:
 
