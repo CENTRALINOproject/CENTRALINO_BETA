@@ -95,6 +95,16 @@ Currently, there are three main functions, but the most important aspect is that
 
 
 
+I used to create small documentation files for each component and some of them are here listed:
+
+### Information gathering on components: 🔧🔩
+- [Bluetooth Coding](/Information_Gathering/Documents/Bluetooth/Bluetooth_coding.md)
+- [Bluetooth](/Information_Gathering/Documents/Bluetooth/Bluetooth_study.md)
+- [InfraRed and semiconductors](/Information_Gathering/Documents/Infra_Red/Semiconduttori.md)
+- [Transfer Protocols](/Information_Gathering/Documents/Transfer_Protocols/Transfer_protocols.md)
+- [Flex Sensor](/Information_Gathering/Documents/Flex_sensor/Flex_sensor.md)
+
+
 ------------------------------------------------------
 
 # Technical details
