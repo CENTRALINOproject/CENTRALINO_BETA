@@ -1,6 +1,8 @@
 <p align = "center">
-<img src = "Design/Logo/logo_outline_black.png" width = "90%" title = "Logo">
+<img src = "Design/Logo/logo_outline_black.png" width = "70%" title = "Logo">
 </p>
+
+> **Arduino-powered device** for _near-field_ **remote control of multiple power outlets**. The device can be programmed and scheduled with timers thanks to its internal clock. It is **easily configured using its Android app** counterpart, which is designed for devices operating with Android and provided of a _bluetooth transmitter_.
 
 # CENTRALINO
 _Your world in your hand._
@@ -20,13 +22,39 @@ By the way I'm quite fond of it, so I decided to share it here as something to r
 ##### Small note on language:
 The project was born in Italian, so unfortunately many of the comments in the code as well as documentation and the report are in Italian.
 I apologize for this, but I hope that the code is still understandable and that the documentation is still useful (maybe with the help of a translator).
+However, I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone.
 
 ### Project reference sector.
 Novel technologies, Internet of Things.
-### Goal:
 
+### Idea and objective:
+
+The project was born with the purpose of making residential and working complex more connected to the people who inhabit it. The project aims to enhance humans environmental control. 
+CENTRALINO is designed to control electrical devices such as household appliances, electric, air conditioners, heating systems, and similar.
+This centralization of control can, in some cases, change a person's experience with the surrounding world. The CENTRALIzation of automation is sometimes not just a convenience but a necessity, i.e. in case of subjects with disabilities. In such cases, "smart homes" are a topic that companies are vigorously addressing to offer increasing automation and integration between systems and services. 
+Home automation involves a complex mix of various technologies and requires strong interdisciplinary collaboration.
+
+Therefore, the CENTRALINO project aims to:
+
+ - Enhance security of electrical devices populated environments.
+ - Reduce operating costs.
+ - Convert old environments and old systems into more dynamic ones.
+ - Simplify the design, installation, maintenance, and use of technology.
+ - As a whole: improve the quality of life.
 
 ### Description of the project:
+
+The project is named "CENTRALINO" (Italian for "switchboard"), the name reflects its function of both **centralizing** and **managing** control, much like in telecommunications. 
+It is a device that allows remote control of multiple power outlets with the ability to be programmed and scheduled at intervals using an internal clock. The device is easily configured with mobile devices such as phones, tablets, or computers. The latter only needs to support applications designed for Android operating systems and have a Bluetooth transmitter.
+2.2. Reference sector: new technologies, Internet of Things (IoT), home automation.
+
+Functions
+3.7. Currently, there are three functions, but the most important aspect is that there is a foundation that anyone can use to develop their own custom functions. The functions are as follows:
+
+Instant On/Off - For greater safety, future security measures will be implemented to prevent continuous switching on and off of the same outlet to avoid damaging the connected devices and the microcontroller itself.
+On/Off with an alarm - It uses the RTC (Real-Time Clock) to compare CENTRALINO's time with the user-set "alarm" time.
+On/Off with a timer - It uses the <Time.h> library, which allows the use of a time and date storage tool and ensures an always up-to-date local time without the need for an RTC device. Continuously querying the RTC would consume too much battery power, and since replacing the RTC battery takes time, it is preferred to use the mentioned library to increase battery life. The physical CENTRALINO device receives the timer duration in minutes from the CENTRALINO software application and performs operations to determine the corresponding hours, minutes, and seconds.
+
 
 ### Functions.
 
