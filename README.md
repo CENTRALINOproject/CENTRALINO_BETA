@@ -1,10 +1,27 @@
+<p align = "center">
+<img src = "Design/Logo/logo_outline_black.png" width = "90%" title = "Logo">
+</p>
+
 # CENTRALINO
-Your world in your hand.
+_Your world in your hand._
 
-# Project name: 
-CENTRALINO
+## Hi, I'm Filippo 👋
+This is a very old project of mine, it was born in January 2017 and concluded in June the same year. 
+This was my first project in the field of electronics and programming.
+I was 17 years old and I guess ...
 
-# Reference sector.
+By the way I'm quite fond of it, so I decided to share it here as something to remember. Something that will always suggest how ...
+<p align = "right">
+<b>...every long journey begins with a first step.</b>
+</p>
+
+#### Last modified: 19th June 2017
+------------------------------------------------------
+##### Small note on language:
+The project was born in Italian, so unfortunately many of the comments in the code as well as documentation and the report are in Italian.
+I apologize for this, but I hope that the code is still understandable and that the documentation is still useful (maybe with the help of a translator).
+
+### Project reference sector.
 Novel technologies, Internet of Things.
 ### Goal:
 
