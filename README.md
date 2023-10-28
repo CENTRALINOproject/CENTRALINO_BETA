@@ -2,22 +2,30 @@
 <img src = "Design/Logo/logo_outline_black.png" width = "70%" title = "Logo">
 </p>
 
-> **Arduino-powered device** for _near-field_ **remote control of multiple power outlets**. The device can be programmed and scheduled with timers thanks to its internal clock. It is **easily configured using its Android app** counterpart, which is designed for devices operating with Android and provided of a _bluetooth transmitter_.
+> **Arduino-powered device** for _near-field_ **remote control of multiple power outlets**. 
+> 
+> The device can be programmed and scheduled with timers thanks to its internal clock. 
+> 
+> It can be **easily configured using its Android app** counterpart, which is designed for devices operating with Android provided of a _bluetooth transmitter_.
 
 # CENTRALINO
 _Your world in your hand._
+<p align = "right">
+Last modified: 19th June 2017
+</p>
 
 ## Hi, I'm Filippo 👋
 This is a very old project of mine, it was born in January 2017 and concluded in June the same year. 
 This was my first project in the field of electronics and programming.
-I was 17 years old and I guess ...
+I was 17 years old and I guess you can tell I was a bit naive, but I was very passionate about it and I still am.
 
-By the way I'm quite fond of it, so I decided to share it here as something to remember. Something that will always suggest how ...
+This project has many flaws, but it was a great learning experience, I'm quite fond of it, so I decided to share it here as something to remember. 
+
+Something that will always suggest how ...
 <p align = "right">
 <b>...every long journey begins with a first step.</b>
 </p>
 
-#### Last modified: 19th June 2017
 ------------------------------------------------------
 ##### Small note on language:
 The project was born in Italian, so unfortunately many of the comments in the code as well as documentation and the report are in Italian.
