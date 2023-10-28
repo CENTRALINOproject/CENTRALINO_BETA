@@ -8,10 +8,10 @@
 > 
 > It can be **easily configured using its Android app** counterpart, which is designed for devices operating with Android provided of a _bluetooth transmitter_.
 > 
-> The app also supports **voice commands** with a very simple syntax, which makes it easy to use.
+> The app also supports **voice commands** with a very simple syntax.
 
 # CENTRALINO
-_Your world in your hand._
+_Your world in your hands._
 <p align = "right">
 Last modified: 19th June 2017
 </p>
