@@ -29,10 +29,12 @@ Something that will always suggest how ...
 </p>
 
 <p align = "center">
-<img src = "Design/Logo/Logo_app.png" width = "20%" title = "Logo">
-<img src = "Project_Report/media/vista_fondo_min.jpg" width = "15%" title = "sketch">
-<img src = "Project_Report/media/vista_laterale_mina.jpg" width = "25%" title = "lateral sketch">
-
+<img src = "Project_Report/media/vista_fondo_min.jpg" width = "20%" title = "sketch">
+<img src = "Project_Report/media/vista_laterale_mina.jpg" width = "40%" title = "lateral sketch">
+<br>
+<img src = "Design/Logo/Logo_app.png" width = "15%" title = "Logo">
+<img src = "Design/Android_Centralino/Screenshots/screenshot1.png" width = "20%" title = "screenshot1">
+<img src = "Design/Android_Centralino/Screenshots/screenshot2.png" width = "21%" title = "screenshot2">
 </p>
 
 
