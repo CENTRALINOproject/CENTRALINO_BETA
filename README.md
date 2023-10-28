@@ -161,7 +161,7 @@ The android app presentation is available [here](/Project_Report/Presentazione_a
 ### The final system will be based on the presence of three characters:
 
 <p align = "center">
-<img src = "Project_Report/media/diagram.svg" width = "60%" title = "diagram">
+<img src = "Project_Report/media/diagram.svg" width = "40%" title = "diagram">
 
   - **USER**: (uses the application) connects via bluetooth to the devices.
   - **CENTRALINO**: (described in this readme) controls the power outlet.
@@ -232,7 +232,7 @@ In order to be able to implement the device in a larger system, the device only 
 Possibly in the future the CENTRALINO server may be provided with a wirless antenna in order to communicate with a router, which in turn communicates with the user, possibly via the internet. However, this poses a problem of security and privacy. 
 
 <p align = "center">
-<img src = "Project_Report/media/diagram_future_expansion.svg" width = "60%" title = "diagram">
+<img src = "Project_Report/media/diagram_future_expansion.svg" width = "40%" title = "diagram">
 </p>
 
 
