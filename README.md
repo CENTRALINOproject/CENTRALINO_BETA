@@ -31,8 +31,8 @@ Something that will always suggest how ...
 <p align = "center">
 <img src = "Project_Report/media/vista_fondo_min.jpg" width = "20%" title = "sketch">
 <img src = "Project_Report/media/vista_laterale_mina.jpg" width = "40%" title = "lateral sketch">
+<img src = "Information_Gathering/Multimedia/Pin_out/ArduinoMicro_Pinout3.png" width = "20%" title = "Logo">
 <br>
-<img src = "Design/Logo/Logo_app.png" width = "15%" title = "Logo">
 <img src = "Design/Android_Centralino/Screenshots/screenshot1.png" width = "20%" title = "screenshot1">
 <img src = "Design/Android_Centralino/Screenshots/screenshot2.png" width = "21%" title = "screenshot2">
 </p>
@@ -88,20 +88,23 @@ Currently, there are three main functions, but the most important aspect is that
 # Repository structure
 
     .
-    ├── Design                      # Design files
+    ├── Design                        # Design files
     │   ├── 
     │   ├── 
     │   └── 
     |
     ├── Information_Gathering 
-    │   ├── Documents                 #
-    │   │    ├── Bluetooth            #
-    │   │    ├── Infra_Red            #
-    │   │    ├── Transfer_Protocols   #
-    │   │    └── Flex_sensor          #
+    │   ├── Documents                 # Documents concerning components working principles
+    │   │    ├── Bluetooth            # Code snippets and protocol description of bluetooth communication
+    │   │    ├── Infra_Red            # Semiconductor and diodes working principles
+    │   │    ├── Transfer_Protocols   # I2C and SPI protocols description
+    │   │    └── Flex_sensor          # Flex sensor working principles
     │   │
-    │   └── Multimedia              #      
-    ├── Project_Report              #
+    │   └── Multimedia                # Pin configuration for different components
+    │        ├── ...
+    │        └── ...
+    │      
+    ├── Project_Report                # 
 
 
 
