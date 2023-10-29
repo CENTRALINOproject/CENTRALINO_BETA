@@ -1,5 +1,7 @@
 <p align = "center">
 <img src = "Design/Logo/logo_outline_black.png" width = "70%" title = "Logo">
+<br>
+<i>Your world in your hands.</i>
 </p>
 
 > **Arduino-powered device** for _near-field_ **remote control of multiple power outlets**. 
@@ -11,7 +13,6 @@
 > The app also supports **voice commands** with a very simple syntax.
 
 # CENTRALINO
-_Your world in your hands._
 <p align = "right">
 Last modified: 19th June 2017
 </p>
