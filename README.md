@@ -147,7 +147,7 @@ I used to create small documentation files for each component and some of them a
 Here is possible to find the latest version of the Android app and the Arduino code.
 
 - [Android app](/Design/Android_Centralino/App_builds/STABLE_CENTRALINO1_3.apk) 📱
-    - Overview of the App GUI is available [here](/CENTRALINO_BETA/Design/Android_Centralino/Screenshots/Presentation.md)
+    - Overview of the App GUI is available [here](/Design/Android_Centralino/Screenshots/Presentation.md)
     - Overview of the App code structure is available [here](Code_Rationale.md#rationale-behind-the-android-app-code-structure)
 
 - [Arduino code](/Design/Software/CLIENTino_versions/CLIENTinoPRESENTATION1_1/CLIENTinoPRESENTATION1_1.ino) ⚙
