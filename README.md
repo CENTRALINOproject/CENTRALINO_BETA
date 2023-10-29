@@ -51,7 +51,7 @@ I apologize for this, but I hope that the code is still understandable and that 
 
 **I also decided to translate a part of the report, regarding the code structure, which I think is the most important part of the report.**
 
-It can be found [here](Code_Rationale.md).
+Code rationale can be found [here](Code_Rationale.md).
 
 ## Idea and objective:
 
