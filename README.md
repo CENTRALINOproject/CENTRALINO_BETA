@@ -49,9 +49,13 @@ I apologize for this, but I hope that the code is still understandable and that 
 
 **I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone**.
 
-**I also decided to translate a part of the report, regarding the code structure, which I think is the most important part of the report.**
+**I also decided to translate a part of the report, concerning the code structure and rationale.**
 
-Code rationale can be found [here](Code_Rationale.md).
+Such translated document can be found [here](Code_Rationale.md).
+
+**I also translated the Android app presentation concerning the App GUI.** 
+
+Such translated document can be found [here](Design/Android_Centralino/Screenshots/Presentation.md).
 
 ## Idea and objective:
 
@@ -73,12 +77,15 @@ Home automation involves a complex mix of various technologies and requires stro
 
 ## Description of the project:
 
-The project is named "CENTRALINO" (Italian for "switchboard"), the name reflects its function of both **centralizing** and **managing** control, much like in telecommunications. 
-It is a device that allows remote control of multiple power outlets with the ability to be programmed and scheduled at specific intervals using an internal clock. The device is easily configured with mobile devices such as phones, tablets, or computers. The latter only needs to support applications designed for Android operating systems and have a Bluetooth transmitter.
+The project is named "CENTRALINO" (Italian for "switchboard"), the name reflects its function of both **centralizing** and **managing** control, much like in telecommunications.
+
+CENTRALINO is a device that allows remote control of multiple power outlets with the possibility to be programmed and scheduled at specific intervals using an internal clock.
+
+The device is easily configured with mobile devices such as phones, tablets, or computers. The latter only needs to run an Android OS and be provided of a Bluetooth transmitter.
 
 ## Functions of the device:
 
-Currently, there are three main functions, but the most important aspect is that there is a foundation that anyone can use to develop their own custom functions. 
+Currently, there are three main functions, but the **most important aspect** is that there is an **infrastracture basis that anyone can use to develop their own custom functions** or also implement **new communication protocols**.
 
 1. **Instant On/Off** - Instantaneous switching on and off of the selected device (which means indirect control on its power outlet). 
 
@@ -140,8 +147,11 @@ I used to create small documentation files for each component and some of them a
 Here is possible to find the latest version of the Android app and the Arduino code.
 
 - [Android app](/Design/Android_Centralino/App_builds/STABLE_CENTRALINO1_3.apk) 📱
+    - Overview of the App GUI is available [here](/CENTRALINO_BETA/Design/Android_Centralino/Screenshots/Presentation.md)
+    - Overview of the App code structure is available [here](Code_Rationale.md#rationale-behind-the-android-app-code-structure)
 
 - [Arduino code](/Design/Software/CLIENTino_versions/CLIENTinoPRESENTATION1_1/CLIENTinoPRESENTATION1_1.ino) ⚙
+    - Overview of the Arduino code structure is available [here](Code_Rationale.md#rationale-behind-the-arduino-code-structure)
 
 ## Project report: 📝
 
@@ -170,11 +180,13 @@ A user can connect to CENTRALINO with the appropriate software application simpl
 <img src = "Project_Report/media/diagram.svg" width = "40%" title = "diagram">
 </p>
 
+
   - **USER**: connects via bluetooth to the devices.
   - **CENTRALINO**: controls the power outlet.
-  - **CENTRALINO-SERVER**: (creation is planned) that gives the user the possibility to control all the associated CENTRALINO without ever having to disconnect from CENTRALINO SERVER that will take care of managing the communications with the others.
+  - **CENTRALINO-SERVER**: enables the user to control all the associated CENTRALINO (CLIENTs) without ever having to disconnect from CENTRALINO SERVER, which will take care of managing the communications with the others.
 
-In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
+
+    The latter has not been created yet. However, by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that operate synchronously under the control of a single central server.
 
 ------------------------------------------------------
 
@@ -254,4 +266,4 @@ For greater safety, future security measures should be implemented to prevent co
 The voice commands syntax is very simple, but it is also very limited. It is not possible to deviate even just a little without incurring in unrecognized commands. This is due to the total absence of natural language processing, which in 2017 I dint know how to implement.
 
  #### Concerning InfraRed communication:
-The code structure of the device is able to eventually support infrared communication, but it is not implemented yet. However the physical circuitry is designed to support it.
+The code structure of the device is able to eventually support infrared communication, but it is not implemented yet to the same extent as Bluetooth. Only basic functions are implemented such as instant on/off of a single outlet. However the physical circuitry is designed to support it and the code structure is ready to be expanded.

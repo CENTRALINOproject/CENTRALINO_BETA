@@ -28,9 +28,15 @@ Without these, it would be impossible to determine when a packet begins or ends,
 ##### Content and divisions:
 Inside the packet, there are additional divisions indicated by the symbol "," (ASCII: 44). It helps determine the beginning and end of each packet sector, providing greater packet integrity (in the case of erroneous transmissions, if there are no ",", the packet will not be considered valid. For a better understanding, refer to the "void bluetooth_Parser()" function). 
 
-**The final structure of the packet is as follows**
+**Packet final structure**
 
-[ Activity (2 digits) , Extra_value (4 digits) , Extra_value2 (6 digits) ]
+    [ 
+        Activity (2 digits) 
+        , 
+        Extra_value (4 digits) 
+        , 
+        Extra_value2 (6 digits) 
+    ]
 
  - `Activity` varies based on Wake-up/Timer and On/Off. 
  - `Extra_value` contains the pin number to which the command should be directed. 
@@ -44,7 +50,10 @@ The variable `activity` mentioned in the previous point stores the code correspo
 In `Extra_value`, is stored the device number, the packet refers to, so the value found in `rel[x].socket` is, in fact, the pin to which the relay is connected and to which `Extra_value` refers (this mechanism makes it possible to address packets to individual devices, similarly to a "MAC address"). 
 
 In `Extra_value2`, you can find the supplementary value that supports the "activity." For example, the times for "alarms" expressed as "001650" (for integrity reasons, they are always six digits). The one just mentioned is an alarm for 16:50.
-> Example packet: "[03,0006,001650]". It sets a power-on alarm for 16:50 on pin 6.
+
+> Example packet: "[03,0006,001650]". 
+>
+> It sets a power-on alarm for 16:50 on pin 6.
 
 ### Main Challenges
 
@@ -64,9 +73,9 @@ To inform the application about the devices connected to the device, and for thi
 
 ----------------------------------------------------------- 
 
-Referring to the latest version of the code, app .apk available [here](/Design/Android_Centralino/App_builds/STABLE_CENTRALINO1_3.apk)
-
 ## Rationale behind the Android app code structure
+
+Referring to the latest version of the code, app .apk available [here](/Design/Android_Centralino/App_builds/STABLE_CENTRALINO1_3.apk)
 
 ### Brief explanation
 The application mainly uses the use of global variables that are continuously used in block to send packets with the `activity`. These three variables take their name from the physical device system CENTRALINO, therefore they are also called `activity`, `extra_value` and `extra_value2`.
@@ -85,11 +94,11 @@ The App Inventor development platform is based on the use of events. Android eve
 
 ### Main Challenges
 
-#### Handling events 
-Personally, the transition from a traditional programming system to a more articulated one can be hard. Knowing that the code does not always do the same operations in sequence but behaves differently based on the events that arise is very different from what I was used to.
+#### Event Handling
+The transition from a conventional programming paradigm to a more intricate one can pose substantial challenges. Unlike traditional sequential code, this paradigm relies on dynamic event-driven behavior, necessitating a shift in coding approach.
 
-#### Absence of documentation
-Not being App Inventor a real programming language, it is very rare to find reliable documentation on the syntax of the commands, fortunately, their operation is very intuitive, but in cases where this intuitiveness has failed, there was a need to spend a lot of time in research and understanding of commands suitable for the pursuit of objectives.
+#### Scarcity of Documentation
+Given that App Inventor is not structured around a conventional programming language, authoritative documentation pertaining to command syntax is notably sparse. While the platform's intuitive operation aids in most cases, instances where intuitive cues fall short demand extensive research and comprehension of commands for achieving predefined objectives.
 
-#### App Inventor limitations
-A big problem was found in the use of App Inventor itself precisely because it is a platform under development and is still in the BETA phase, it is often subject to crashes, bugs of various kinds, and frequent interruptions of partial operation.
+#### App Inventor Limitations
+Significant impediments arise from the utilization of App Inventor, primarily owing to its ongoing beta development status. This platform is susceptible to recurrent crashes, diverse bugs, and frequent disruptions in its partial functionality, posing substantial operational challenges.
