@@ -52,8 +52,8 @@ I apologize for this, but I hope that the code is still understandable and that 
 **I also decided to translate a part of the report, concerning the code structure and rationale.**
 Such translated document can be found [here](Code_Rationale.md).
 
-**I also translated the Android app presentation concerning the App GUI** 
-Such translated document can be found [here](Design/Android_Centralino/Screenshots/Presentation.md).**
+**I also translated the Android app presentation concerning the App GUI.** 
+Such translated document can be found [here](Design/Android_Centralino/Screenshots/Presentation.md).
 
 ## Idea and objective:
 
