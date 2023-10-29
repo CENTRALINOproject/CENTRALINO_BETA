@@ -16,6 +16,10 @@ _Your world in your hands._
 Last modified: 19th June 2017
 </p>
 
+**Project reference fields:** 
+
+`Novel Technologies`, `Internet of Things (IoT)`, `Home Automation`.
+
 ## Hi, I'm Filippo 👋
 This is a very old project of mine, it was born in January 2017 and concluded in June the same year. 
 This was my first project in the field of electronics and programming.
@@ -41,11 +45,12 @@ Something that will always suggest how ...
 ##### Small note on language 🇮🇹 🇬🇧:
 The project was born in Italian, so unfortunately many of the comments in the code as well as documentation and the report are in Italian.
 I apologize for this, but I hope that the code is still understandable and that the documentation is still useful (maybe with the help of a translator).
-However, I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone.
 
-**Project reference sector:**
+**I decided to have at least the README in English, so that the core of the project as well as the repository structure is understandable to everyone**.
 
-`Novel Technologies`, `Internet of Things (IoT)`, `Home Automation`.
+**I also decided to translate a part of the report, regarding the code structure, which I think is the most important part of the report.**
+
+It can be found [here](Code_Rationale.md).
 
 ## Idea and objective:
 
@@ -169,67 +174,6 @@ A user can connect to CENTRALINO with the appropriate software application simpl
   - **CENTRALINO-SERVER**: (creation is planned) that gives the user the possibility to control all the associated CENTRALINO without ever having to disconnect from CENTRALINO SERVER that will take care of managing the communications with the others.
 
 In theory by adding a communication layer on top of the current one with very little effort, it would be possible to create a network of CENTRALINO devices that communicate with each other through a central server
-
-## Rationale behind the code structure
-
-Referring to the latest version of the code, available [here](/Design/Software/CLIENTino_versions/CLIENTinoPRESENTATION1_1/CLIENTinoPRESENTATION1_1.ino).
-
-### Brief overview of the code structure:
-The code utilizes two data structures named `function` and `relay`. 
-
-The `function` structure is responsible for containing the information received through Bluetooth packets, while the `relay` structure is responsible for storing information related to the physical device's outlets. 
-
-Each `relay` structure will have its own:
- - activation and deactivation times, 
- - a timer,
- - a numerical description to indicate on which physical relay to issue a command, especially the pin address so that the microcontroller knows where to send the activation/deactivation signal. 
-
-#### How is the information received from the Bluetooth packets stored?
-
-An additional layer on top of the Bluetooth communication system was created to make the system more flexible. Bluetooth covers all seven levels of the ISO/OSI, but with an additional layer, it is possible to managae different power outlets an the same CENTRALINO (making this comunication mean flexible to our purspose).
-
-#### Bluetooth Packet Structure:
-
-##### Initiator and terminator:
-Each Bluetooth packet consists of 16 bytes and has a packet initiator "[" (ASCII: 91) and a terminator "]" (ASCII: 93). 
-Without these, it would be impossible to determine when a packet begins or ends, making byte stream handling much more manageable. 
-
-##### Content and divisions:
-Inside the packet, there are additional divisions indicated by the symbol "," (ASCII: 44). It helps determine the beginning and end of each packet sector, providing greater packet integrity (in the case of erroneous transmissions, if there are no ",", the packet will not be considered valid. For a better understanding, refer to the "void bluetooth_Parser()" function). 
-
-**The final structure of the packet is as follows**
-
-[ Activity (2 digits) , Extra_value (4 digits) , Extra_value2 (6 digits) ]
-
- - `Activity` varies based on Wake-up/Timer and On/Off. 
- - `Extra_value` contains the pin number to which the command should be directed. 
- - `Extra_value2` contains, in the case of "Wake-up," the time in the hh:mm:ss format, and in the case of "Timer," the time in milliseconds.
-
-##### Activity handling:
-The system also has an "activity handler"; it serves to manage packets once they have been "routed" and understand the actions required. 
-
-The variable `activity` mentioned in the previous point stores the code corresponding to the action the microcontroller must perform (e.g., 01 and 02 are the `activity` corresponding to instantaneous power On and Off). 
-
-In `Extra_value`, is stored the device number, the packet refers to, so the value found in `rel[x].socket` is, in fact, the pin to which the relay is connected and to which `Extra_value` refers (this mechanism makes it possible to address packets to individual devices, similarly to a "MAC address"). 
-
-In `Extra_value2`, you can find the supplementary value that supports the "activity." For example, the times for "alarms" expressed as "001650" (for integrity reasons, they are always six digits). The one just mentioned is an alarm for 16:50.
-> Example packet: "[03,0006,001650]". It sets a power-on alarm for 16:50 on pin 6.
-
-### Main Challenges
-
-#### Limitations of the microcontroller:
-The microcontroller lacks an internal clock, making it impossible for it to determine the time during activities. This required the use of an external component, a Real-Time Clock module, to manage the time. 
-
-However, this component does not have alarm or timer functions, so the microcontroller had to handle time and activity deadlines on its own. 
-
-Additionally, there was the issue that if two `relay` structures had the same deactivation time and the time for acquiring the time was too slow, the system might be too slow to manage the alarms. This was resolved with the "void turn_by_match()" function, which checks each individual `relay` structure in times well below a second and ensures that multiple `relays` can be turned on/off simultaneously, even when the times coincide down to the second.
-
-#### Automatic retrieval of the number of devices connected to CENTRALINO by the app:
-To inform the application about the devices connected to the device, and for this purpose, a superficial description of the power outlets was required. Thus, the `description` variable with a legend (referred to in the code as MEANINGS OF DESCRIPTION) was introduced. The mechanism through which the application learns about the various `descriptions` of the `relay` structures is as follows:
-
-> - The software application sends a packet with activity = 50, i.e., a Discovery (requesting information to be sent).
-> - The device sends as many packets as there are "relay" structures with activity = 51 and the respective rel[].description (the description of each structure)
-> - Finally sends a packet with activity = 99, which means that the relays have been completed, and the application can stop waiting for more information.
 
 ------------------------------------------------------
 
