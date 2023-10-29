@@ -28,7 +28,7 @@ Without these, it would be impossible to determine when a packet begins or ends,
 ##### Content and divisions:
 Inside the packet, there are additional divisions indicated by the symbol "," (ASCII: 44). It helps determine the beginning and end of each packet sector, providing greater packet integrity (in the case of erroneous transmissions, if there are no ",", the packet will not be considered valid. For a better understanding, refer to the "void bluetooth_Parser()" function). 
 
-**The final structure of the packet is as follows**
+**Packet final structure**
 
 [ Activity (2 digits) , Extra_value (4 digits) , Extra_value2 (6 digits) ]
 
